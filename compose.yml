@@ -1,16 +1,18 @@
 ---
 services:
-  db:
-    image: shaikmustafa/arshad:db
+   db:
+    image: narasimhasaragadam/python:db
     deploy:
       replicas: 1
     ports:
       - "3306:3306"
+    volumes:
+     - mydata:/var/lib/mysql/
     networks:
       - mynetwork
 
   auth_service:
-    image: shaikmustafa/arshad:auth
+    image: narasimhasaragadam/python:auth
     deploy:
       replicas: 1
     ports:
@@ -19,10 +21,9 @@ services:
       - mynetwork
     depends_on:
       - db
-    
 
-  book_service:
-    image: shaikmustafa/arshad:book
+ book_service:
+    image: narasimhasaragadam/python:book
     deploy:
       replicas: 1
     ports:
@@ -31,8 +32,9 @@ services:
       - mynetwork
     depends_on:
       - db
+
   borrow_service:
-    image: shaikmustafa/arshad:borrow
+    image: narasimhasaragadam/python:borrow
     deploy:
       replicas: 1
     ports:
@@ -43,11 +45,11 @@ services:
       - db
 
   frontend:
-    image: shaikmustafa/arshad:frontend
+    image: narasimhasaragadam/python:application
     deploy:
       replicas: 1
     ports:
-      - "5000:5000"
+       - "5000:5000"
     networks:
       - mynetwork
     depends_on:
@@ -57,4 +59,6 @@ services:
 
 networks:
   mynetwork:
-    driver: bridge
+    driver: overlay
+volumes:
+  mydata:
