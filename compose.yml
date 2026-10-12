@@ -11,7 +11,7 @@ services:
     networks:
       - mynetwork
       
-  auth_service:
+   auth_service:
     image: narasimhasaragadam/python:auth
     deploy:
       replicas: 1
@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
 
- book_service:
+   book_service:
     image: narasimhasaragadam/python:book
     deploy:
       replicas: 1
@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
 
-  borrow_service:
+   borrow_service:
     image: narasimhasaragadam/python:borrow
     deploy:
       replicas: 1
@@ -44,7 +44,7 @@ services:
     depends_on:
       - db
 
-  frontend:
+   frontend:
     image: narasimhasaragadam/python:application
     deploy:
       replicas: 1
