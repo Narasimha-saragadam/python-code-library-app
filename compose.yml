@@ -3,7 +3,7 @@ services:
    db:
     image: narasimhasaragadam/python:db
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "3306:3306"
     volumes:
@@ -14,7 +14,7 @@ services:
    auth_service:
     image: narasimhasaragadam/python:auth
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5001:5001"
     networks:
@@ -25,7 +25,7 @@ services:
    book_service:
     image: narasimhasaragadam/python:book
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5002:5002"
     networks:
@@ -36,7 +36,7 @@ services:
    borrow_service:
     image: narasimhasaragadam/python:borrow
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5003:5003"
     networks:
@@ -47,7 +47,7 @@ services:
    frontend:
     image: narasimhasaragadam/python:application
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
        - "5000:5000"
     networks:
