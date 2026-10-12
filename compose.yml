@@ -10,7 +10,7 @@ services:
      - mydata:/var/lib/mysql/
     networks:
       - mynetwork
-
+      
   auth_service:
     image: narasimhasaragadam/python:auth
     deploy:
